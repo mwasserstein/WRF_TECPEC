@@ -88,7 +88,7 @@ time_offset_hours = 0
 ## stuff for synoptic API ##
 ############################
 API_ROOT = "https://api.synopticdata.com/v2/"
-API_TOKEN = "0d0f87d395244930af38c1460e0c1a0f"
+API_TOKEN = "XXXXXXXXXXXXXXXXXXX" # Synoptic data api token
 within = 30 # how many minutes within the time of interest
 
 # paths for data
