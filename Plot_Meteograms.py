@@ -77,7 +77,7 @@ def round_up_to_nearest_5(number):
 ## stuff for synoptic API ##
 ############################
 API_ROOT = "https://api.synopticdata.com/v2/"
-API_TOKEN = "0d0f87d395244930af38c1460e0c1a0f"
+API_TOKEN = "XXXXXXXXXXXXX" # synoptic data api token
 
 # User inputs
 if path in [2,6,12]:
