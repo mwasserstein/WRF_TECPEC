@@ -326,11 +326,11 @@ for leg in legs[:]:
                         alpha = 1, zorder = 3, transform = ccrs.PlateCarree())
 
     # Plot terrain colorbar
-    cax = plt.axes([0.12,0.23, 0.8, 0.012])
+    cax = plt.axes([0.12,0.26, 0.8, 0.012])
     plt.colorbar(topo_fill_zoom, cax = cax, fraction = 0.5, label = 'Elevation (m)', orientation = 'horizontal')
 
     # Plot colorbar for temperature
-    cax = plt.axes([0.12,0.13, 0.8, 0.012])
+    cax = plt.axes([0.12,0.18, 0.8, 0.012])
     plt.colorbar(path, cax = cax, fraction = 0.5, label = 'Temperature Bias (WRF - Observation °C)', orientation = 'horizontal')
 
     # Titles

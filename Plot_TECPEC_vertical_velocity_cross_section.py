@@ -319,7 +319,7 @@ for i in range(len(flight_df)):   # Loop through all flight legs
             ax.set_title("Init {}\nFlight Leg {} d03 and d04".format(init_time_str,flight_leg), fontsize = 10, loc = 'left',)
         else:
             ax.set_title("Init {}\nFlight Leg {} d03".format(init_time_str,flight_leg), fontsize = 10, loc = 'left',)
-        ax.set_title("Valid {}\n{} Track".format(valid_time_str, track), fontsize = 10, loc = 'right',)
+        ax.set_title("WRF{} Run {}\nValid {}\n{} Track".format(path, run, valid_time_str, track), fontsize = 10, loc = 'right',)
 
         # Text to indicate potential temperature contours
         ax.text(0.03,0.01,'Dashed contours are potential temperature',
