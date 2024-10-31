@@ -386,7 +386,7 @@ for i in range(len(flight_df)):   # Loop through all flight legs
                 ax.vlines([start_x_from_d04-w_cross_d03.xy_loc.values[0].x, xs_d04[-1]], 0,10000, colors = 'k', linestyle = '-',zorder = 50)
 
         # Add the color bar
-        cb_dbz = fig.colorbar(dbz_contours_d03, ax=ax, label = 'w (m/s)')
+        cb_dbz = fig.colorbar(dbz_contours_d03, ax=ax, label = 'dBZ')
         cb_dbz.ax.tick_params(labelsize=10)
         cb_dbz.ax.set_yticks(np.arange(-30,31,10))
 
