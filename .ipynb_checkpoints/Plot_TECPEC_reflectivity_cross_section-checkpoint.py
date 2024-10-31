@@ -386,7 +386,7 @@ for i in range(len(flight_df)):   # Loop through all flight legs
                 ax.vlines([start_x_from_d04-w_cross_d03.xy_loc.values[0].x, xs_d04[-1]], 0,10000, colors = 'k', linestyle = '-',zorder = 50)
 
         # Add the color bar
-        cb_dbz = fig.colorbar(dbz_contours_d03, ax=ax, label = 'w (m/s)')
+        cb_dbz = fig.colorbar(dbz_contours_d03, ax=ax, label = 'dBZ')
         cb_dbz.ax.tick_params(labelsize=10)
         cb_dbz.ax.set_yticks(np.arange(-30,31,10))
 
@@ -395,7 +395,7 @@ for i in range(len(flight_df)):   # Loop through all flight legs
             ax.set_title("Init {}\nFlight Leg {} d03 and d04".format(init_time_str,flight_leg), fontsize = 10, loc = 'left',)
         else:
             ax.set_title("Init {}\nFlight Leg {} d03".format(init_time_str,flight_leg), fontsize = 10, loc = 'left',)
-        ax.set_title("Valid {}\n{} Track".format(valid_time_str, track), fontsize = 10, loc = 'right',)
+        ax.set_title("WRF{} Run {}\nValid {}\n{} Track".format(path, run, valid_time_str, track), fontsize = 10, loc = 'right',)
 
         # Text to indicate potential temperature contours
         ax.text(0.03,0.01,'Dashed contours are QVAPOR in units g/kg',
