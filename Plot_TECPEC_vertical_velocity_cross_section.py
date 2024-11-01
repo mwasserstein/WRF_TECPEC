@@ -29,6 +29,24 @@ import datetime
 import pyart
 import xarray as xr
 
+# Function to use to find start and end files for plotting
+def find_time_idx(time, files, domain):
+    '''
+    Function will find the index in a list of files corresponding to the time you want
+    '''
+    
+    # Loop through the file paths and extract the datetime part
+    for idx, file_path in enumerate(files):
+        # Extract the datetime part from the file path
+        date_str = file_path.split('_d0{}_'.format(domain))[1]
+        file_datetime = datetime.datetime.strptime(date_str, '%Y-%m-%d_%H:%M:%S')
+
+        # Compare with the target datetime
+        if file_datetime == time:
+            break
+            
+    return idx
+
 # Read in a screenshot you took a while back to get a colormap for plotting
 img = imread('/uufs/chpc.utah.edu/common/home/u1371671/img.png')
 
@@ -64,6 +82,12 @@ if path ==1:
     base_path = base + 'steenburgh-group12/michael/wrf/'
 else:
     base_path = base + 'steenburgh-group12/michael/wrf{}/'.format(path)
+if path in [2,12]:
+    # Start and end time for the period you want to analyze
+    start_time_analysis = datetime.datetime(2019,3,22,19,30)
+    end_time_analysis = datetime.datetime(2019,3,23,0,15) 
+else:
+    pass
 WRF_path = base_path + 'wrf_runs/wrf_{}/run/'.format(run_number)
 WPS_path = base_path + 'WPS/'
 
@@ -87,6 +111,18 @@ data_files_d03.sort()
 flight_df = pd.read_csv(base + 'steenburgh-group12/michael/TECPEC_Flight_level_data/TECPEC_leg_data.csv')
 
 if plot_d04:
+    # Load in data files and sort them
+    # domain 4
+    data_files_d04 = glob.glob(WRF_path + '*wrfout_d04*') 
+    data_files_d04.sort()
+
+    # Find the start and end indicies for the data files of the period of interest for your study
+    start_ind_d04 = find_time_idx(time=start_time_analysis, files=data_files_d04, domain=4)
+    end_ind_d04 = find_time_idx(time=end_time_analysis, files=data_files_d04, domain=4)
+    
+    # Extract only the data files for the WRF run that you are interested in
+    data_files_d04 = data_files_d04[start_ind_d04:end_ind_d04+1]
+    
     # Testing dataset to get the wrf bounds
     wrf_file_d04 = Dataset(data_files_d04[1])
 
@@ -96,6 +132,18 @@ if plot_d04:
     left_lon = geobounds.bottom_left.lon
     max_lat = geobounds.top_right.lat
     right_lon = geobounds.top_right.lon
+
+# Domain 3
+data_files_d03 = glob.glob(WRF_path + '*wrfout_d03*') # for the innermost domain
+data_files_d03.sort()
+
+# Find the start and end indicies for the data files of the period of interest for your study
+start_ind_d03 = find_time_idx(time=start_time_analysis, files=data_files_d03, domain=3)
+end_ind_d03 = find_time_idx(time=end_time_analysis, files=data_files_d03, domain=3)
+
+# Extract only the data files for the WRF run that you are interested in
+data_files_d03 = data_files_d03[start_ind_d03:end_ind_d03+1]
+
 
 ##### Plot settings (Doing here so its outside the for loop)
 w_levels = np.arange(-5,5.01,.25)

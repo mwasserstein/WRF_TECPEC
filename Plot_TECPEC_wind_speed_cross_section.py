@@ -33,7 +33,7 @@ import wrf
 import xarray as xr
 import pyproj
 
-# Function to use
+# Function to use to find start and end files for plotting
 def find_time_idx(time, files, domain):
     '''
     Function will find the index in a list of files corresponding to the time you want
@@ -67,7 +67,7 @@ path = int(args.path)
 run_number = '{}'.format(run).zfill(2) # leading zeros
 print('Plotting Domain for run', run)
 
-plot_d04 = True # Do you want to plot domain 4 stuff
+plot_d04 = False # Do you want to plot domain 4 stuff
 
 # Base paths
 base = '/uufs/chpc.utah.edu/common/home/'
@@ -81,6 +81,8 @@ if path in [2,12]:
     # Start and end time for the period you want to analyze
     start_time_analysis = datetime.datetime(2019,3,22,19,30)
     end_time_analysis = datetime.datetime(2019,3,23,0,15) 
+else:
+    pass
 WRF_path = base_path + 'wrf_runs/wrf_{}/run/'.format(run_number)
 WPS_path = base_path + 'WPS/'
 
