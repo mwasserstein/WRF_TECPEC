@@ -63,7 +63,7 @@ plot_d04 = False # Do you want to plot data for domain 4 also?
 if (path == 6) or (path == 12):
     start_time = datetime.datetime(2019,3,22,12,0)
     end_time   = datetime.datetime(2019,3,23,6,0)
-    if run in ['14', '16']:
+    if run in ['14', '16', '18']:
         start_time = datetime.datetime(2019,3,22,12,0)
         end_time   = datetime.datetime(2019,3,23,2,0)
     if run in ['15',]:

@@ -66,7 +66,7 @@ if path == 1:
 elif (path == 2) or (path == 6) or (path == 12):
     time_start = '201903221200'  # verify this is right
     time_end = '201903230600'
-    if run in ['14', '16']:
+    if run in ['14', '16', '18']:
         time_start = '201903221200'  # verify this is right
         time_end = '201903230200'
     if run == '15':
@@ -242,6 +242,7 @@ else:
 
 c_CLN = '#ed3232'
 
+# Hour interval for x-axis in plot (the time differences)
 hour_interval = 3
 
 #################### Plotting ########################
