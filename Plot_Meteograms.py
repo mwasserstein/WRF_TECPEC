@@ -84,7 +84,7 @@ if path in [2,6,12]:
     init_time_api = '201903221200'
     end_time_api  = '201903230600'
     hour_interval = 3
-    if run in ['14','16']:
+    if run in ['14','16', '18']:
         init_time_api = '201903221200'
         end_time_api  = '201903230200' 
     if run in ['15']:
